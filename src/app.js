@@ -1,22 +1,19 @@
 import React from 'react'; 
 import { connect } from 'react-redux'; 
 import { addItem } from './actions'; 
+import './index.css'; 
+import Form from './form'; 
 
 export class App extends React.Component {
     render(){
         const list = this.props.items.map((item, idx) => (
-            <div key={idx}>
+            <div className="item-container" key={idx}>
                 <p>{item}</p>
             </div>
         )); 
         return (
             <div> 
-                <input ref={input => this.userInput = input} />
-                <button onClick={e => {
-                    this.props.dispatch(addItem(this.userInput.value)) 
-                    this.userInput.value = ''; 
-                }
-                }>Add</button> 
+                <Form />
                 {list}
             </div>
         )
